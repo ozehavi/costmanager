@@ -6,9 +6,10 @@ import Grid from '@mui/material/Grid';
 import Record from "./Components/Record";
 import UserMessage from "./Components/UserMessage";
 import {v4 as uuidv4} from 'uuid';
+import {recordModel} from "./model/recordModel";
 
-const a = [{"id":"1","title":"title1","type":"Gaz","price":"100$"},{"id":"2","title":"title2","type":"Gaz","price":"200$"},{"id":"3","title":"title3","type":"Gaz","price":"300$"},{"id":"4","title":"title4","type":"Gaz","price":"400$"},{"id":"5","title":"title5","type":"Gaz","price":"500$"}];
-//    const [selectedServerKey, setSelectedServerKey] = useLocalStorage<string | null | undefined>("jcreate-selected-server-key")
+// const a = [{"id":"1","title":"title1","type":"Gaz","price":"100$"},{"id":"2","title":"title2","type":"Gaz","price":"200$"},{"id":"3","title":"title3","type":"Gaz","price":"300$"},{"id":"4","title":"title4","type":"Gaz","price":"400$"},{"id":"5","title":"title5","type":"Gaz","price":"500$"}];
+// const [selectedServerKey, setSelectedServerKey] = useLocalStorage<string | null | undefined>("jcreate-selected-server-key")
 function App() {
     const [records, setRecords] = useState([]);
     const [message, setMessage] = React.useState({open:false, type:"success", text:""});
@@ -46,7 +47,8 @@ function App() {
 
     const createRecord = function(){
         let records = JSON.parse(localStorage.getItem('records')) ?? [];
-        records.push({"id":uuidv4(),"title":"title1","type":"Gaz","price":"100$"})
+        const newRecord: recordModel = {id:uuidv4(),title:"title1",type:"Gaz",Price:"100$"}
+        records.push(newRecord);
         setRecords(records);
         localStorage.setItem('records', JSON.stringify(records));
         showUserMessage(true, "success", "Record created successfully");
