@@ -17,10 +17,13 @@ const Record : FC<{data: recordModel, removeRecord:void}> = ({data, removeRecord
                     {data?.title}
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    {data?.type}
+                    {data?.description}
                 </Typography>
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
                     {data?.price}
+                </Typography>
+                <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                    {data?.type}
                 </Typography>
             </CardContent>
             <CardActions>

@@ -17,7 +17,7 @@ import {FC} from "react";
 
 const pages = ['Records', 'Report'];
 
-const ResponsiveAppBar : FC<{createRecord:void}> = ({createRecord}) => {
+const ResponsiveAppBar : FC<{openCreateDialog:void}> = ({openCreateDialog}) => {
     const [anchorElNav, setAnchorElNav] = useState(false);
 
     const handleNavMenu = () => {
@@ -117,7 +117,7 @@ const ResponsiveAppBar : FC<{createRecord:void}> = ({createRecord}) => {
 
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="Create a new record">
-                                <IconButton onClick={createRecord} sx={{ p: 0 }}>
+                                <IconButton onClick={openCreateDialog} sx={{ p: 0 }}>
                                     <AddCircleOutlineIcon fontSize={"large"} sx={{color: 'white'}}/>
                                 </IconButton>
                             </Tooltip>
