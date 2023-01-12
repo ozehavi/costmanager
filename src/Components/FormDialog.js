@@ -87,7 +87,7 @@ export const FormDialog : FC<{dialogState:boolean, handleDialog: () => void, cre
                                 label="Category"
                                 fullWidth
                                 style={{marginTop: "20px"}}
-                                defaultValue="EUR"
+                                defaultValue="Food"
                                 onChange={handleInputChange}
                             >
                                 {categories.map((option) => (
