@@ -14,22 +14,13 @@ export const FormDialog : FC<{dialogState:boolean, handleDialog: () => void, cre
     const [formValues, setFormValues] = useState({recordTitle:'', recordDescription:'', recordPrice: 0, recordCategory:'EUR'})
 
     const categories = [
-        {
-            value: 'USD',
-            label: '$',
-        },
-        {
-            value: 'EUR',
-            label: '€',
-        },
-        {
-            value: 'BTC',
-            label: '฿',
-        },
-        {
-            value: 'JPY',
-            label: '¥',
-        },
+        {value: 'Food', label: 'Food'},
+        {value: 'Furniture', label: 'Furniture'},
+        {value: 'Fashion', label: 'Fashion'},
+        {value: 'Health', label: 'Health'},
+        {value: 'HouseHold', label: 'HouseHold'},
+        {value: 'Office Equipment', label: 'Office Equipment'},
+        {value: 'Pet Care', label: 'Pet Care'}
     ];
 
     const handleInputChange = (event) => {
