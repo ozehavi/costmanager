@@ -43,12 +43,10 @@ function App() {
     const [dialog, setDialog] = useState(false);
 
     useEffect( () => {
-
         const loadData = async () => {
             let records = await LocalStorageHandler.getData();
             setRecords(records);
         };
-
         loadData();
     }, [])
 

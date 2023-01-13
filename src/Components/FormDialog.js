@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {FC, useState} from 'react';
+import {FC, useEffect, useState} from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -10,12 +10,18 @@ import DialogTitle from '@mui/material/DialogTitle';
 import MenuItem from "@mui/material/MenuItem";
 import {FormControl} from "@mui/material";
 import {categories, categoriesIcons} from "../App";
+import Alert from '@mui/material/Alert';
 
 export const FormDialog : FC<{dialogState:boolean, handleDialog: () => void, createRecord: (data: any) => void}> = ({dialogState, handleDialog, createRecord}) => {
     const emptyFormValues = {recordTitle:'', recordDescription:'', recordPrice: 0, recordCategory:'Food'};
     const [formValues, setFormValues] = useState(emptyFormValues);
     const [errors, setErrors] = useState([]);
     const [errorMessage, setErrorMessage] = useState([]);
+
+    useEffect(() => {
+        setErrors([]);
+        setErrorMessage([]);
+    }, [dialogState]);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -25,19 +31,20 @@ export const FormDialog : FC<{dialogState:boolean, handleDialog: () => void, cre
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(formValues);
-
+        const errorsList = [];
+        const messagesList = [];
         if(formValues.recordTitle === ''){
-            setErrors([...errors, 'recordTitle']);
-            setErrorMessage([...errorMessage, 'Record title must have value']);
+            errorsList.push('recordTitle');
+            messagesList.push('Record title must have value');
         }
         if(formValues.recordPrice <= 0){
-            setErrors([...errors, 'recordPrice']);
-            setErrorMessage([...errorMessage, 'Record price must be a positive value\'']);
+            errorsList.push('recordPrice');
+            messagesList.push('Record price must be a positive value');
         }
-
+        setErrors(errorsList);
+        setErrorMessage(messagesList);
         if(errors)
             return;
-
 
         createRecord(formValues);
         setFormValues(emptyFormValues);
@@ -108,6 +115,9 @@ export const FormDialog : FC<{dialogState:boolean, handleDialog: () => void, cre
                                 ))}
                             </TextField>
                         </FormControl>
+                        { errors.length > 1 &&
+                            errorMessage.map((err, idx) =><Alert severity="error" key={idx}>{err}</Alert>)
+                        }
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleDialog}>Cancel</Button>
