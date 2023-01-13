@@ -43,7 +43,8 @@ export const FormDialog : FC<{dialogState:boolean, handleDialog: () => void, cre
         }
         setErrors(errorsList);
         setErrorMessage(messagesList);
-        if(errors)
+
+        if(errorsList.length > 0)
             return;
 
         createRecord(formValues);
@@ -115,7 +116,7 @@ export const FormDialog : FC<{dialogState:boolean, handleDialog: () => void, cre
                                 ))}
                             </TextField>
                         </FormControl>
-                        { errors.length > 1 &&
+                        { errors.length > 0 &&
                             errorMessage.map((err, idx) =><Alert severity="error" key={idx}>{err}</Alert>)
                         }
                     </DialogContent>
