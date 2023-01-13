@@ -8,13 +8,11 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
-import Button from '@mui/material/Button';
-import '../App.css';
-import {categories} from "../App";
+import {styled} from '@mui/material/styles';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import Divider from '@mui/material/Divider';
+import {categoriesIcons} from "../App";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -22,6 +20,7 @@ const Item = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    minWidth: '200px',
 }));
 
 const RecordsFilter : FC<{filter:void}> = ({filter}) => {
@@ -49,10 +48,11 @@ const RecordsFilter : FC<{filter:void}> = ({filter}) => {
                             select
                             label="Category"
                             defaultValue="All"
+                            fullWidth
                         >
                             {categoriesOptions.map((option) => (
                                 <MenuItem key={option} value={option}>
-                                    {option}
+                                    {categoriesIcons[option]} {option}
                                 </MenuItem>
                             ))}
                         </TextField>
@@ -63,6 +63,7 @@ const RecordsFilter : FC<{filter:void}> = ({filter}) => {
                             select
                             label="Month"
                             defaultValue="All"
+                            fullWidth
                         >
                             {monthOptions.map((option) => (
                                 <MenuItem key={option} value={option}>
@@ -77,6 +78,7 @@ const RecordsFilter : FC<{filter:void}> = ({filter}) => {
                             select
                             label="Year"
                             defaultValue="All"
+                            fullWidth
                         >
                             {yearOptions.map((option) => (
                                 <MenuItem key={option} value={option}>
