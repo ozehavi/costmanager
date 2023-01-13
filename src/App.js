@@ -41,8 +41,8 @@ function App() {
     const [message, setMessage] = React.useState({open:false, type:"success", text:""});
     const [dialog, setDialog] = useState(false);
 
-    useEffect(() => {
-        let records =  JSON.parse(localStorage.getItem('records')) ?? [];
+    useEffect(async () => {
+        let records = await LocalStorageHandler.getData();
         setRecords(records);
     }, [])
 
@@ -84,7 +84,6 @@ function App() {
 
     const openCreateDialog = function(){
         setDialog(true);
-
     }
 
     return (

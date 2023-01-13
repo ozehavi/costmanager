@@ -14,6 +14,8 @@ import {categories, categoriesIcons} from "../App";
 export const FormDialog : FC<{dialogState:boolean, handleDialog: () => void, createRecord: (data: any) => void}> = ({dialogState, handleDialog, createRecord}) => {
     const emptyFormValues = {recordTitle:'', recordDescription:'', recordPrice: 0, recordCategory:'Food'};
     const [formValues, setFormValues] = useState(emptyFormValues);
+    const [errors, setErrors] = useState([]);
+    const [errorMessage, setErrorMessage] = useState([]);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -23,6 +25,20 @@ export const FormDialog : FC<{dialogState:boolean, handleDialog: () => void, cre
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(formValues);
+
+        // if(formValues.recordTitle === ''){
+        //     setErrors(...['recordTitle']);
+        //     setErrorMessage(...['Record title must have value']);
+        // }
+        // if(formValues.recordPrice <= 0){
+        //     setErrors(...['recordPrice']);
+        //     setErrorMessage(...['Record price must be a positive value']);
+        // }
+        //
+        // if(errors)
+        //     return;
+
+
         createRecord(formValues);
         setFormValues(emptyFormValues);
     };
@@ -47,6 +63,7 @@ export const FormDialog : FC<{dialogState:boolean, handleDialog: () => void, cre
                                 fullWidth
                                 variant="standard"
                                 onChange={handleInputChange}
+                                error={errors.includes("recordTitle")}
                             />
                             <TextField
                                 autoFocus
@@ -71,6 +88,7 @@ export const FormDialog : FC<{dialogState:boolean, handleDialog: () => void, cre
                                 fullWidth
                                 variant="standard"
                                 onChange={handleInputChange}
+                                error={errors.includes("recordPrice")}
                             />
                             <br />
                             <TextField
