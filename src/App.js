@@ -2,8 +2,6 @@ import './App.css';
 import ResponsiveAppBar from "./Components/ResponsiveAppBar";
 import * as React from 'react';
 import {useEffect, useState} from 'react';
-import Grid from '@mui/material/Grid';
-import Record from "./Components/Record";
 import UserMessage from "./Components/UserMessage";
 import {v4 as uuidv4} from 'uuid';
 import {recordModel} from "./model/recordModel";
@@ -16,16 +14,8 @@ import HomeIcon from "@mui/icons-material/Home";
 import LocalPrintshopIcon from "@mui/icons-material/LocalPrintshop";
 import PetsIcon from "@mui/icons-material/Pets";
 import {LocalStorageHandler} from "./LocalStorageHandler/LocalStorageHandler";
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import DeleteIcon from "@mui/icons-material/Delete";
-import IconButton from "@mui/material/IconButton";
 import RecordsTable from "./Components/RecordsTable";
+//[{"id":"2162a9b5-7f88-4726-a874-b00037a971a4","title":"test","description":"test","type":"Furniture","price":"44"},{"id":"ae90540e-9aad-4998-b36b-59345e571a26","title":"Coffee","description":"adsasd","type":"Food","price":"5"},{"id":"d0f3bb5c-6afe-4928-a353-70d630bb17aa","title":"Printer","description":"I need a printer for my officeI need a printer for my officeI need a printer for my officeI need a printer for my officeI need a printer for my officeI need a printer for my officeI need a printer for my officeI need a printer for my officeI need a printer for my officeI need a printer for my officeI need a printer for my officeI need a printer for my office","type":"Office Equipment","price":"2000"},{"id":"caf06bfb-d5d0-4557-97ed-32eb108a30d9","title":"Friday Shopping","description":"We needed a lot of food","type":"Food","price":"1500"},{"id":"54e5f85a-fd5c-40b2-8d23-7d8753b0eceb","title":"Optalgin","description":"I had a headache","type":"Health","price":"50"}]
 
 export const categories = [
     {value: 'Food', label: 'Food'},
