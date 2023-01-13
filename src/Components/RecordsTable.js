@@ -40,7 +40,7 @@ const Record : FC<{data: recordModel[], removeRecord:void}> = ({data, removeReco
                             <TableCell component="th" scope="row" align="center">
                                 {record.title}
                             </TableCell>
-                            <TableCell align="center">{record.description}</TableCell>
+                            <TableCell align="center" style={{maxWidth:"250px"}}>{record.description}</TableCell>
                             <TableCell align="center" className={"priceText"}>{record.price}₪</TableCell>
                             <TableCell align="center"><Chip label={record.type} variant="outlined"  icon={categoriesIcons[record.type]}/></TableCell>
                             <TableCell align="center">
