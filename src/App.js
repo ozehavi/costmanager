@@ -104,13 +104,13 @@ function App() {
         <div className="App">
             <ResponsiveAppBar  openCreateDialog={openCreateDialog} />
             <RecordsTable data={records} removeRecord={removeRecord} />
-            <Grid container spacing={3} sx={{padding: '20px'}} justifyContent="center">
-                {records.map((record, index) => (
-                    <Grid item key={index}>
-                        <Record data={record} removeRecord={removeRecord} />
-                    </Grid>
-                ))}
-            </Grid>
+            {/*<Grid container spacing={3} sx={{padding: '20px'}} justifyContent="center">*/}
+            {/*    {records.map((record, index) => (*/}
+            {/*        <Grid item key={index}>*/}
+            {/*            <Record data={record} removeRecord={removeRecord} />*/}
+            {/*        </Grid>*/}
+            {/*    ))}*/}
+            {/*</Grid>*/}
             <UserMessage handleClose={handleClose} message={message} />
             <FormDialog dialogState={dialog} handleDialog={()=>{setDialog(!dialog)}} createRecord={createRecord} />
         </div>
