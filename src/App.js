@@ -15,6 +15,7 @@ import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import HomeIcon from "@mui/icons-material/Home";
 import LocalPrintshopIcon from "@mui/icons-material/LocalPrintshop";
 import PetsIcon from "@mui/icons-material/Pets";
+import {LocalStorageHandler} from "./LocalStorageHandler/LocalStorageHandler";
 
 export const categories = [
     {value: 'Food', label: 'Food'},
@@ -41,9 +42,14 @@ function App() {
     const [message, setMessage] = React.useState({open:false, type:"success", text:""});
     const [dialog, setDialog] = useState(false);
 
-    useEffect(async () => {
-        let records = await LocalStorageHandler.getData();
-        setRecords(records);
+    useEffect( () => {
+
+        const loadData = async () => {
+            let records = await LocalStorageHandler.getData();
+            setRecords(records);
+        };
+
+        loadData();
     }, [])
 
     const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {

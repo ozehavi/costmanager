@@ -26,17 +26,17 @@ export const FormDialog : FC<{dialogState:boolean, handleDialog: () => void, cre
         event.preventDefault();
         console.log(formValues);
 
-        // if(formValues.recordTitle === ''){
-        //     setErrors(...['recordTitle']);
-        //     setErrorMessage(...['Record title must have value']);
-        // }
-        // if(formValues.recordPrice <= 0){
-        //     setErrors(...['recordPrice']);
-        //     setErrorMessage(...['Record price must be a positive value']);
-        // }
-        //
-        // if(errors)
-        //     return;
+        if(formValues.recordTitle === ''){
+            setErrors([...errors, 'recordTitle']);
+            setErrorMessage([...errorMessage, 'Record title must have value']);
+        }
+        if(formValues.recordPrice <= 0){
+            setErrors([...errors, 'recordPrice']);
+            setErrorMessage([...errorMessage, 'Record price must be a positive value\'']);
+        }
+
+        if(errors)
+            return;
 
 
         createRecord(formValues);
