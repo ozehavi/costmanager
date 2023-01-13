@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {FC, useState} from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -6,22 +7,13 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import {FC, useState} from "react";
 import MenuItem from "@mui/material/MenuItem";
 import {FormControl} from "@mui/material";
+import {categories, categoriesIcons} from "../App";
 
 export const FormDialog : FC<{dialogState:boolean, handleDialog: () => void, createRecord: (data: any) => void}> = ({dialogState, handleDialog, createRecord}) => {
-    const [formValues, setFormValues] = useState({recordTitle:'', recordDescription:'', recordPrice: 0, recordCategory:'EUR'})
-
-    const categories = [
-        {value: 'Food', label: 'Food'},
-        {value: 'Furniture', label: 'Furniture'},
-        {value: 'Fashion', label: 'Fashion'},
-        {value: 'Health', label: 'Health'},
-        {value: 'HouseHold', label: 'HouseHold'},
-        {value: 'Office Equipment', label: 'Office Equipment'},
-        {value: 'Pet Care', label: 'Pet Care'}
-    ];
+    const emptyFormValues = {recordTitle:'', recordDescription:'', recordPrice: 0, recordCategory:'Food'};
+    const [formValues, setFormValues] = useState(emptyFormValues);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -31,7 +23,8 @@ export const FormDialog : FC<{dialogState:boolean, handleDialog: () => void, cre
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(formValues);
-        createRecord(formValues)
+        createRecord(formValues);
+        setFormValues(emptyFormValues);
     };
 
     return (
@@ -92,7 +85,7 @@ export const FormDialog : FC<{dialogState:boolean, handleDialog: () => void, cre
                             >
                                 {categories.map((option) => (
                                     <MenuItem key={option.value} value={option.value}>
-                                        {option.label}
+                                        {categoriesIcons[option.value]} {option.label}
                                     </MenuItem>
                                 ))}
                             </TextField>

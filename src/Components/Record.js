@@ -7,7 +7,9 @@ import '../App.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import {recordModel} from "../model/recordModel";
+import Chip from '@mui/material/Chip';
 import {FC} from "react";
+import {categoriesIcons} from "../App";
 
 const Record : FC<{data: recordModel, removeRecord:void}> = ({data, removeRecord}) => {
     return (
@@ -19,12 +21,10 @@ const Record : FC<{data: recordModel, removeRecord:void}> = ({data, removeRecord
                 <Typography sx={{ mb: 1.5 }} color="text.secondary">
                     {data?.description}
                 </Typography>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    {data?.price}
+                <Typography sx={{ mb: 1.5 }} color="green">
+                    {data?.price} ₪
                 </Typography>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    {data?.type}
-                </Typography>
+                <Chip label={data?.type} variant="outlined"  icon={categoriesIcons[data?.type]}/>
             </CardContent>
             <CardActions>
                 <IconButton aria-label="delete" size="large" onClick={() =>{removeRecord(data.id)}}>
