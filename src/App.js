@@ -16,6 +16,16 @@ import HomeIcon from "@mui/icons-material/Home";
 import LocalPrintshopIcon from "@mui/icons-material/LocalPrintshop";
 import PetsIcon from "@mui/icons-material/Pets";
 import {LocalStorageHandler} from "./LocalStorageHandler/LocalStorageHandler";
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import DeleteIcon from "@mui/icons-material/Delete";
+import IconButton from "@mui/material/IconButton";
+import RecordsTable from "./Components/RecordsTable";
 
 export const categories = [
     {value: 'Food', label: 'Food'},
@@ -93,6 +103,7 @@ function App() {
     return (
         <div className="App">
             <ResponsiveAppBar  openCreateDialog={openCreateDialog} />
+            <RecordsTable data={records} removeRecord={removeRecord} />
             <Grid container spacing={3} sx={{padding: '20px'}} justifyContent="center">
                 {records.map((record, index) => (
                     <Grid item key={index}>

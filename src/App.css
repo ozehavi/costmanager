@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.priceText{
+  color: green!important;
+}

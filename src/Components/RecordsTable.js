@@ -1,0 +1,59 @@
+import * as React from 'react';
+import {FC} from 'react';
+import '../App.css';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
+import {recordModel} from "../model/recordModel";
+import TableContainer from "@mui/material/TableContainer";
+import Paper from "@mui/material/Paper";
+import Table from "@mui/material/Table";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import TableCell from "@mui/material/TableCell";
+import TableBody from "@mui/material/TableBody";
+import {categoriesIcons} from "../App";
+import Chip from "@mui/material/Chip";
+import Badge from '@mui/material/Badge';
+
+const Record : FC<{data: recordModel[], removeRecord:void}> = ({data, removeRecord}) => {
+    const total = data.reduce((accumulator, object) => {return  accumulator + parseInt(object.price)}, 0);
+    return (
+        <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                <TableHead>
+                    <TableRow>
+                        <TableCell align="center" ><h3><Badge badgeContent={data.length} color="success" showZero max={1000000}>#</Badge></h3></TableCell>
+                        <TableCell align="center"><h3>Title</h3></TableCell>
+                        <TableCell align="center"><h3>Description</h3></TableCell>
+                        <TableCell align="center"><h3>Price (<span style={{color: "green"}}>{total}₪</span> Total)</h3></TableCell>
+                        <TableCell align="center"><h3>Type</h3></TableCell>
+                        <TableCell align="center"></TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {data.map((record, idx) => (
+                        <TableRow
+                            key={record.id}
+                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                        >
+                            <TableCell align="center">{idx + 1}</TableCell>
+                            <TableCell component="th" scope="row" align="center">
+                                {record.title}
+                            </TableCell>
+                            <TableCell align="center">{record.description}</TableCell>
+                            <TableCell align="center" className={"priceText"}>{record.price}₪</TableCell>
+                            <TableCell align="center"><Chip label={record.type} variant="outlined"  icon={categoriesIcons[record.type]}/></TableCell>
+                            <TableCell align="center">
+                                <IconButton aria-label="delete" size="large" onClick={() =>{removeRecord(record.id)}}>
+                                    <DeleteIcon />
+                                </IconButton>
+                            </TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        </TableContainer>
+    );
+}
+
+export default Record;
