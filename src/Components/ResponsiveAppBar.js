@@ -10,8 +10,6 @@ import Tooltip from '@mui/material/Tooltip';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 
-const pages = ['Records', 'Report'];
-
 const ResponsiveAppBar : FC<{openCreateDialog:void}> = ({openCreateDialog}) => {
     const darkTheme = createTheme({
         palette: {
