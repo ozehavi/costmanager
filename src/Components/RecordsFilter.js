@@ -13,6 +13,8 @@ import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import Divider from '@mui/material/Divider';
 import {categoriesIcons} from "../App";
+import {useState} from "react";
+import Badge from '@mui/material/Badge';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -23,10 +25,19 @@ const Item = styled(Paper)(({ theme }) => ({
     minWidth: '200px',
 }));
 
-const RecordsFilter : FC<{filter:void}> = ({filter}) => {
-    const categoriesOptions = ['All', 'Food', 'Furniture', 'Fashion', 'Health', 'HouseHold', 'Office Equipment', 'Pet Care'];
-    const monthOptions = ['All', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    const yearOptions = ['All', '2020', '2021', '2022', '2023', '2024'];
+const categoriesOptions = ['All', 'Food', 'Furniture', 'Fashion', 'Health', 'HouseHold', 'Office Equipment', 'Pet Care'];
+export const monthOptions = ['All', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const yearOptions = ['All', '2020', '2021', '2022', '2023', '2024'];
+
+const RecordsFilter : FC<{filterRecords: (filter: any) => void}> = ({filterRecords}) => {
+    const emptyFormValues = {category:'All', month:'All', year: 'All'};
+    const [formValues, setFormValues] = useState(emptyFormValues);
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setFormValues({ ...formValues, [name]: value });
+        filterRecords({ ...formValues, [name]: value });
+    }
 
     return (
         <Accordion style={{backgroundColor: "#e6e6e6"}}>
@@ -36,7 +47,14 @@ const RecordsFilter : FC<{filter:void}> = ({filter}) => {
                 id="panel1a-header"
                 style={{display:"inline-flex"}}
             >
-                <Typography>Filter Records</Typography>
+                <Typography>
+                    <Badge
+                        variant="dot"
+                        invisible={JSON.stringify(formValues) === JSON.stringify(emptyFormValues)}
+                        color="success"
+                        anchorOrigin={{ vertical: 'top', horizontal: 'left'}}
+                    >Filter Records</Badge>
+                </Typography>
             </AccordionSummary>
             <AccordionDetails style={{display:"inline-flex"}}>
                 <Stack direction="row"
@@ -44,11 +62,13 @@ const RecordsFilter : FC<{filter:void}> = ({filter}) => {
                        spacing={2}>
                     <Item>
                         <TextField
-                            id="filterCategory"
+                            id="category"
+                            name="category"
                             select
                             label="Category"
                             defaultValue="All"
                             fullWidth
+                            onChange={handleInputChange}
                         >
                             {categoriesOptions.map((option) => (
                                 <MenuItem key={option} value={option}>
@@ -59,11 +79,13 @@ const RecordsFilter : FC<{filter:void}> = ({filter}) => {
                     </Item>
                     <Item>
                         <TextField
-                            id="filterCategory"
+                            id="month"
+                            name="month"
                             select
                             label="Month"
                             defaultValue="All"
                             fullWidth
+                            onChange={handleInputChange}
                         >
                             {monthOptions.map((option) => (
                                 <MenuItem key={option} value={option}>
@@ -74,11 +96,13 @@ const RecordsFilter : FC<{filter:void}> = ({filter}) => {
                     </Item>
                     <Item>
                         <TextField
-                            id="filterYear"
+                            id="year"
+                            name="year"
                             select
                             label="Year"
                             defaultValue="All"
                             fullWidth
+                            onChange={handleInputChange}
                         >
                             {yearOptions.map((option) => (
                                 <MenuItem key={option} value={option}>

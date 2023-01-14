@@ -14,9 +14,23 @@ import TableBody from "@mui/material/TableBody";
 import {categoriesIcons} from "../App";
 import Chip from "@mui/material/Chip";
 import Badge from '@mui/material/Badge';
+import type {filterModel} from "../model/recordModel";
 
-const Record : FC<{data: recordModel[], removeRecord:void}> = ({data, removeRecord}) => {
+const Record : FC<{data: recordModel[], filter: filterModel, removeRecord:void}> = ({data, filter, removeRecord}) => {
+
+    const filteredData = () => {
+        if(filter.category && filter.category !== 'All')
+            data = data.filter(item => item.category === filter.category)
+        if(filter.month && filter.month !== 'All')
+            data = data.filter(item => item.month === filter.month)
+        if(filter.year && filter.year !== 'All')
+            data = data.filter(item => item.year === filter.year)
+        return data;
+    }
+
+    data = filteredData();
     const total = data.reduce((accumulator, object) => {return  accumulator + parseInt(object.price)}, 0);
+
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -42,7 +56,7 @@ const Record : FC<{data: recordModel[], removeRecord:void}> = ({data, removeReco
                             </TableCell>
                             <TableCell align="center" style={{maxWidth:"250px"}}>{record.description}</TableCell>
                             <TableCell align="center" className={"priceText"}>{record.price}₪</TableCell>
-                            <TableCell align="center"><Chip label={record.type} variant="outlined"  icon={categoriesIcons[record.type]}/></TableCell>
+                            <TableCell align="center"><Chip label={record.category} variant="outlined"  icon={categoriesIcons[<record className="category"></record>]}/></TableCell>
                             <TableCell align="center">
                                 <IconButton aria-label="delete" size="large" onClick={() =>{removeRecord(record.id)}}>
                                     <DeleteIcon />
