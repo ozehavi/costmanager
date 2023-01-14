@@ -68,4 +68,5 @@ const ResponsiveAppBar : FC<{openCreateDialog:void}> = ({openCreateDialog}) => {
         </ThemeProvider>
     );
 }
+
 export default ResponsiveAppBar;

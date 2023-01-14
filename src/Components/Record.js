@@ -6,12 +6,12 @@ import Typography from '@mui/material/Typography';
 import '../App.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
-import {recordModel} from "../model/recordModel";
+import {models} from "../Models/Models";
 import Chip from '@mui/material/Chip';
 import {FC} from "react";
 import {categoriesIcons} from "../App";
 
-const Record : FC<{data: recordModel, removeRecord:void}> = ({data, removeRecord}) => {
+const Record : FC<{data: models, removeRecord:void}> = ({data, removeRecord}) => {
     return (
         <Card sx={{ minWidth: 275, backgroundColor: '#e7e8e6' }} >
             <CardContent>

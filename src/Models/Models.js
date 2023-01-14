@@ -1,4 +1,3 @@
-// Change file name to models
 export interface recordModel {
     id: string;
     title: string;

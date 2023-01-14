@@ -45,8 +45,7 @@ const RecordsFilter : FC<{filterRecords: (filter: any) => void}> = ({filterRecor
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
-                style={{display:"inline-flex"}}
-            >
+                style={{display:"inline-flex"}}>
                 <Typography>
                     <Badge
                         variant="dot"

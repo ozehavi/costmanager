@@ -3,7 +3,7 @@ import {FC} from 'react';
 import '../App.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
-import {recordModel} from "../model/recordModel";
+import {models} from "../Models/Models";
 import TableContainer from "@mui/material/TableContainer";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
@@ -14,9 +14,9 @@ import TableBody from "@mui/material/TableBody";
 import {categoriesIcons} from "../App";
 import Chip from "@mui/material/Chip";
 import Badge from '@mui/material/Badge';
-import type {filterModel} from "../model/recordModel";
+import type {filterModel} from "../Models/Models";
 
-const Record : FC<{data: recordModel[], filter: filterModel, removeRecord:void}> = ({data, filter, removeRecord}) => {
+const Record : FC<{data: models[], filter: filterModel, removeRecord:void}> = ({data, filter, removeRecord}) => {
 
     const filteredData = () => {
         if(filter.category && filter.category !== 'All')
@@ -41,22 +41,19 @@ const Record : FC<{data: recordModel[], filter: filterModel, removeRecord:void}>
                         <TableCell align="center"><h3>Description</h3></TableCell>
                         <TableCell align="center"><h3>Price (<span style={{color: "green"}}>{total}₪</span> Total)</h3></TableCell>
                         <TableCell align="center"><h3>Type</h3></TableCell>
+                        <TableCell align="center"><h3>Date</h3></TableCell>
                         <TableCell align="center"></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {data.map((record, idx) => (
-                        <TableRow
-                            key={record.id}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
+                        <TableRow key={record.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                             <TableCell align="center">{idx + 1}</TableCell>
-                            <TableCell component="th" scope="row" align="center">
-                                {record.title}
-                            </TableCell>
+                            <TableCell component="th" scope="row" align="center">{record.title}</TableCell>
                             <TableCell align="center" style={{maxWidth:"250px"}}>{record.description}</TableCell>
                             <TableCell align="center" className={"priceText"}>{record.price}₪</TableCell>
                             <TableCell align="center"><Chip label={record.category} variant="outlined"  icon={categoriesIcons[<record className="category"></record>]}/></TableCell>
+                            <TableCell align="center">{record.month}/{record.year}</TableCell>
                             <TableCell align="center">
                                 <IconButton aria-label="delete" size="large" onClick={() =>{removeRecord(record.id)}}>
                                     <DeleteIcon />
