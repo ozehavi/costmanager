@@ -3,7 +3,6 @@ import {FC} from 'react';
 import '../App.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
-import {models} from "../Models/Models";
 import TableContainer from "@mui/material/TableContainer";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
