@@ -65,14 +65,14 @@ function App() {
         setMessage({open:open, type: type ?? "success", text: text ?? ""});
     }
 
-    const removeRecord = function(id){
+    const removeRecord = async function(id){
         try {
             let records = JSON.parse(localStorage.getItem('records')) ?? [];
             let objectToRemove = records.find(obj => obj.id === id);
             let index = records.indexOf(objectToRemove);
             if (index > -1)
                 records.splice(index, 1);
-            localStorage.setItem('records', JSON.stringify(records));
+            await LocalStorageHandler.setData(records);
             setRecords(records);
             showUserMessage(true, "success", "Record deleted successfully");
         }catch (e){
@@ -99,7 +99,8 @@ function App() {
         }
         records.push(newRecord);
         setRecords(records);
-        localStorage.setItem('records', JSON.stringify(records));
+        await LocalStorageHandler.setData(records);
+
         showUserMessage(true, "success", "Record created successfully");
         setDialog(false);
     }
