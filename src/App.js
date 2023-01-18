@@ -60,7 +60,7 @@ function App() {
     };
 
     const showUserMessage = (open, type, text) => {
-        setMessage({open:open, type: type ?? 'error', text: text ?? ''});
+        setMessage({open:open, type: type ?? 'success', text: text ?? ''});
     }
 
     const removeRecord = async function(id){

@@ -17,7 +17,6 @@ export class LocalStorageHandler{
     static async setData(data){
         return new Promise(function(resolve, reject){
             try{
-                debugger
                 localStorage.setItem('records', JSON.stringify(data));
                 resolve();
             }catch (error){
