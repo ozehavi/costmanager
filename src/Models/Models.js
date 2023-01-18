@@ -1,3 +1,8 @@
+/*
+Developers:
+Oren Zehavi ID: 315940429
+Matan Maimon ID: 207275959
+*/
 export interface recordModel {
     id: string;
     title: string;

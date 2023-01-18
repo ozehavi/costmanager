@@ -1,3 +1,8 @@
+/*
+Developers:
+Oren Zehavi ID: 315940429
+Matan Maimon ID: 207275959
+*/
 import * as React from 'react';
 import {FC, useEffect, useState} from 'react';
 import Button from '@mui/material/Button';
@@ -63,50 +68,50 @@ export const FormDialog : FC<{dialogState:boolean, handleDialog: () => void, cre
                         <FormControl>
                             <TextField
                                 autoFocus
-                                margin="dense"
-                                id="recordTitle"
-                                name="recordTitle"
-                                label="Title"
-                                type="text"
+                                margin='dense'
+                                id='recordTitle'
+                                name='recordTitle'
+                                label='Title'
+                                type='text'
                                 fullWidth
-                                variant="standard"
+                                variant='standard'
                                 onChange={handleInputChange}
-                                error={errors.includes("recordTitle")}
+                                error={errors.includes('recordTitle')}
                             />
                             <TextField
                                 autoFocus
-                                margin="dense"
-                                id="recordDescription"
-                                name="recordDescription"
-                                label="Description"
-                                type="text"
+                                margin='dense'
+                                id='recordDescription'
+                                name='recordDescription'
+                                label='Description'
+                                type='text'
                                 fullWidth
-                                variant="standard"
+                                variant='standard'
                                 multiline
                                 rows={4}
                                 onChange={handleInputChange}
                             />
                             <TextField
                                 autoFocus
-                                margin="dense"
-                                id="recordPrice"
-                                name="recordPrice"
-                                label="Price"
-                                type="number"
+                                margin='dense'
+                                id='recordPrice'
+                                name='recordPrice'
+                                label='Price'
+                                type='number'
                                 fullWidth
-                                variant="standard"
+                                variant='standard'
                                 onChange={handleInputChange}
-                                error={errors.includes("recordPrice")}
+                                error={errors.includes('recordPrice')}
                             />
                             <br />
                             <TextField
-                                id="recordCategory"
-                                name="recordCategory"
+                                id='recordCategory'
+                                name='recordCategory'
                                 select
-                                label="Category"
+                                label='Category'
                                 fullWidth
-                                style={{marginTop: "20px"}}
-                                defaultValue="Food"
+                                style={{marginTop: '20px'}}
+                                defaultValue='Food'
                                 onChange={handleInputChange}
                             >
                                 {categories.map((option) => (
@@ -117,12 +122,12 @@ export const FormDialog : FC<{dialogState:boolean, handleDialog: () => void, cre
                             </TextField>
                         </FormControl>
                         { errors.length > 0 &&
-                            errorMessage.map((err, idx) =><Alert severity="error" key={idx}>{err}</Alert>)
+                            errorMessage.map((err, idx) =><Alert severity='error' key={idx}>{err}</Alert>)
                         }
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleDialog}>Cancel</Button>
-                        <Button type="submit" variant="contained">Submit</Button>
+                        <Button type='submit' variant='contained'>Submit</Button>
                     </DialogActions>
                 </form>
             </Dialog>

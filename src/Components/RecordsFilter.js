@@ -1,3 +1,8 @@
+/*
+Developers:
+Oren Zehavi ID: 315940429
+Matan Maimon ID: 207275959
+*/
 import * as React from 'react';
 import {FC} from 'react';
 import Typography from '@mui/material/Typography';
@@ -43,29 +48,29 @@ const RecordsFilter : FC<{filterRecords: (filter: any) => void}> = ({filterRecor
         <Accordion style={{backgroundColor: "#e6e6e6"}}>
             <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-                style={{display:"inline-flex"}}>
+                aria-controls='panel1a-content'
+                id='panel1a-header'
+                style={{display:'inline-flex'}}>
                 <Typography>
                     <Badge
-                        variant="dot"
+                        variant='dot'
                         invisible={JSON.stringify(formValues) === JSON.stringify(emptyFormValues)}
-                        color="success"
+                        color='success'
                         anchorOrigin={{ vertical: 'top', horizontal: 'left'}}
                     >Filter Records</Badge>
                 </Typography>
             </AccordionSummary>
-            <AccordionDetails style={{display:"inline-flex"}}>
-                <Stack direction="row"
-                       divider={<Divider orientation="vertical" flexItem />}
+            <AccordionDetails style={{display:'inline-flex'}}>
+                <Stack direction='row'
+                       divider={<Divider orientation='vertical' flexItem />}
                        spacing={2}>
                     <Item>
                         <TextField
-                            id="category"
-                            name="category"
+                            id='category'
+                            name='category'
                             select
-                            label="Category"
-                            defaultValue="All"
+                            label='Category'
+                            defaultValue='All'
                             fullWidth
                             onChange={handleInputChange}
                         >
@@ -78,11 +83,11 @@ const RecordsFilter : FC<{filterRecords: (filter: any) => void}> = ({filterRecor
                     </Item>
                     <Item>
                         <TextField
-                            id="month"
-                            name="month"
+                            id='month'
+                            name='month'
                             select
-                            label="Month"
-                            defaultValue="All"
+                            label='Month'
+                            defaultValue='All'
                             fullWidth
                             onChange={handleInputChange}
                         >
@@ -95,11 +100,11 @@ const RecordsFilter : FC<{filterRecords: (filter: any) => void}> = ({filterRecor
                     </Item>
                     <Item>
                         <TextField
-                            id="year"
-                            name="year"
+                            id='year'
+                            name='year'
                             select
-                            label="Year"
-                            defaultValue="All"
+                            label='Year'
+                            defaultValue='All'
                             fullWidth
                             onChange={handleInputChange}
                         >

@@ -1,3 +1,8 @@
+/*
+Developers:
+Oren Zehavi ID: 315940429
+Matan Maimon ID: 207275959
+*/
 import * as React from 'react';
 import {FC} from 'react';
 import AppBar from '@mui/material/AppBar';
@@ -22,14 +27,14 @@ const ResponsiveAppBar : FC<{openCreateDialog:void}> = ({openCreateDialog}) => {
 
     return (
         <ThemeProvider theme={darkTheme}>
-            <AppBar position="static">
-                <Container maxWidth="xl">
+            <AppBar position='static'>
+                <Container maxWidth='xl'>
                     <Toolbar disableGutters>
                         <Typography
-                            variant="h6"
+                            variant='h6'
                             noWrap
-                            component="a"
-                            href="/"
+                            component='a'
+                            href='/'
                             sx={{
                                 display: { xs: 'none', md: 'flex' },
                                 color: 'inherit',
@@ -39,9 +44,9 @@ const ResponsiveAppBar : FC<{openCreateDialog:void}> = ({openCreateDialog}) => {
                             Cost Manager
                         </Typography>
                         <Typography
-                            variant="h5"
+                            variant='h5'
                             noWrap
-                            component="a"
+                            component='a'
                             href=""
                             sx={{
                                 mr: 2,
@@ -49,16 +54,15 @@ const ResponsiveAppBar : FC<{openCreateDialog:void}> = ({openCreateDialog}) => {
                                 flexGrow: 1,
                                 color: 'inherit',
                                 textDecoration: 'none',
-                            }}
-                        >
+                            }}>
                             Cost Manager
                         </Typography>
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         </Box>
                         <Box sx={{ flexGrow: 0 }}>
-                            <Tooltip title="Create a new record">
+                            <Tooltip title='Create a new record'>
                                 <IconButton onClick={openCreateDialog} sx={{ p: 0 }}>
-                                    <AddCircleOutlineIcon fontSize={"large"} sx={{color: 'white'}}/>
+                                    <AddCircleOutlineIcon fontSize={'large'} sx={{color: 'white'}}/>
                                 </IconButton>
                             </Tooltip>
                         </Box>
