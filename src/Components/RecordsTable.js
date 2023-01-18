@@ -50,7 +50,7 @@ const Record : FC<{data: recordModel[], filter: filterModel, removeRecord:void}>
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {data.map((record, idx) => (
+                    {data?.map((record, idx) => (
                         <TableRow key={record.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                             <TableCell align='center'>{idx + 1}</TableCell>
                             <TableCell component="th" scope="row" align='center'>{record.title}</TableCell>

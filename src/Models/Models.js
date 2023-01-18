@@ -3,18 +3,22 @@ Developers:
 Oren Zehavi ID: 315940429
 Matan Maimon ID: 207275959
 */
-export interface recordModel {
-    id: string;
-    title: string;
-    description: string;
-    category: string;
-    price: number;
-    month: string;
-    year: string;
+export class recordModel{
+    constructor(id, title, description, category, price, month, year) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.category = category;
+        this.price = price;
+        this.month = month;
+        this.year = year;
+    }
 }
 
-export interface filterModel {
-    category: string;
-    month: string;
-    year: string;
+export class filterModel{
+    constructor(category, month, year) {
+        this.category = category;
+        this.month = month;
+        this.year = year;
+    }
 }
