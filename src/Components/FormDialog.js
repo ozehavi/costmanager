@@ -14,14 +14,24 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import MenuItem from "@mui/material/MenuItem";
 import {FormControl} from "@mui/material";
-import {categories, categoriesIcons} from "../App";
 import Alert from '@mui/material/Alert';
+import {manager} from "../App";
 
 export const FormDialog : FC<{dialogState:boolean, handleDialog: () => void, createRecord: (data: any) => void}> = ({dialogState, handleDialog, createRecord}) => {
     const emptyFormValues = {recordTitle:'', recordDescription:'', recordPrice: 0, recordCategory:'Food'};
     const [formValues, setFormValues] = useState(emptyFormValues);
     const [errors, setErrors] = useState([]);
     const [errorMessage, setErrorMessage] = useState([]);
+
+    const categories = [
+        {value: 'Food', label: 'Food'},
+        {value: 'Furniture', label: 'Furniture'},
+        {value: 'Fashion', label: 'Fashion'},
+        {value: 'Health', label: 'Health'},
+        {value: 'HouseHold', label: 'HouseHold'},
+        {value: 'Office Equipment', label: 'Office Equipment'},
+        {value: 'Pet Care', label: 'Pet Care'}
+    ];
 
     useEffect(() => {
         setErrors([]);
@@ -116,7 +126,7 @@ export const FormDialog : FC<{dialogState:boolean, handleDialog: () => void, cre
                             >
                                 {categories.map((option) => (
                                     <MenuItem key={option.value} value={option.value}>
-                                        {categoriesIcons[option.value]} {option.label}
+                                        {manager.categoriesIcons[option.value]} {option.label}
                                     </MenuItem>
                                 ))}
                             </TextField>

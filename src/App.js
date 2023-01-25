@@ -4,8 +4,11 @@ import * as React from 'react';
 import {useEffect, useState} from 'react';
 import UserMessage from "./Components/UserMessage";
 import {v4 as uuidv4} from 'uuid';
-import {recordModel, filterModel} from "./Models/Models";
+import {filterModel, recordModel} from "./Models/Models";
 import {FormDialog} from "./Components/FormDialog";
+import {LocalStorageHandler} from "./LocalStorageHandler/LocalStorageHandler";
+import RecordsTable from "./Components/RecordsTable";
+import RecordsFilter from "./Components/RecordsFilter";
 import FastfoodIcon from "@mui/icons-material/Fastfood";
 import ChairAltIcon from "@mui/icons-material/ChairAlt";
 import CheckroomIcon from "@mui/icons-material/Checkroom";
@@ -13,21 +16,12 @@ import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import HomeIcon from "@mui/icons-material/Home";
 import LocalPrintshopIcon from "@mui/icons-material/LocalPrintshop";
 import PetsIcon from "@mui/icons-material/Pets";
-import {LocalStorageHandler} from "./LocalStorageHandler/LocalStorageHandler";
-import RecordsTable from "./Components/RecordsTable";
-import RecordsFilter, {monthOptions} from "./Components/RecordsFilter";
 
-export const categories = [
-    {value: 'Food', label: 'Food'},
-    {value: 'Furniture', label: 'Furniture'},
-    {value: 'Fashion', label: 'Fashion'},
-    {value: 'Health', label: 'Health'},
-    {value: 'HouseHold', label: 'HouseHold'},
-    {value: 'Office Equipment', label: 'Office Equipment'},
-    {value: 'Pet Care', label: 'Pet Care'}
-];
-
-export const categoriesIcons = {
+export const manager = {};
+manager.categoriesOptions = ['All', 'Food', 'Furniture', 'Fashion', 'Health', 'HouseHold', 'Office Equipment', 'Pet Care'];
+manager.monthOptions = ['All', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+manager.yearOptions = ['All', '2020', '2021', '2022', '2023', '2024'];
+manager.categoriesIcons = {
     'Food': <FastfoodIcon />,
     'Furniture':<ChairAltIcon />,
     'Fashion':<CheckroomIcon />,
@@ -82,7 +76,7 @@ function App() {
 
     const getDate = () => {
         const date = new Date();
-        return {month: monthOptions[date.getMonth() + 1], year: date.getFullYear()};
+        return {month: manager.monthOptions[date.getMonth() + 1], year: date.getFullYear()};
     }
 
     const createRecord = async function (data) {

@@ -15,10 +15,10 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
-import {categoriesIcons} from "../App";
 import Chip from "@mui/material/Chip";
 import Badge from '@mui/material/Badge';
 import type {filterModel, recordModel} from "../Models/Models";
+import {manager} from "../App";
 
 const Record : FC<{data: recordModel[], filter: filterModel, removeRecord:void}> = ({data, filter, removeRecord}) => {
 
@@ -56,7 +56,7 @@ const Record : FC<{data: recordModel[], filter: filterModel, removeRecord:void}>
                             <TableCell component="th" scope="row" align='center'>{record.title}</TableCell>
                             <TableCell align='center' style={{maxWidth:'250px'}}>{record.description}</TableCell>
                             <TableCell align='center' className={'priceText'}>{record.price}₪</TableCell>
-                            <TableCell align='center'><Chip label={record.category} variant='outlined' icon={categoriesIcons[record.category]}/></TableCell>
+                            <TableCell align='center'><Chip label={record.category} variant='outlined' icon={manager.categoriesIcons[record.category]}/></TableCell>
                             <TableCell align='center'>{record.month}/{record.year}</TableCell>
                             <TableCell align='center'>
                                 <IconButton aria-label='delete' size="'large" onClick={() =>{removeRecord(record.id)}}>

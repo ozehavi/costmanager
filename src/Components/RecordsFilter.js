@@ -4,7 +4,7 @@ Oren Zehavi ID: 315940429
 Matan Maimon ID: 207275959
 */
 import * as React from 'react';
-import {FC} from 'react';
+import {FC, useState} from 'react';
 import Typography from '@mui/material/Typography';
 import '../App.css';
 import Accordion from '@mui/material/Accordion';
@@ -17,9 +17,8 @@ import {styled} from '@mui/material/styles';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import Divider from '@mui/material/Divider';
-import {categoriesIcons} from "../App";
-import {useState} from "react";
 import Badge from '@mui/material/Badge';
+import {manager} from "../App";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -29,10 +28,6 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
     minWidth: '200px',
 }));
-
-const categoriesOptions = ['All', 'Food', 'Furniture', 'Fashion', 'Health', 'HouseHold', 'Office Equipment', 'Pet Care'];
-export const monthOptions = ['All', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-const yearOptions = ['All', '2020', '2021', '2022', '2023', '2024'];
 
 const RecordsFilter : FC<{filterRecords: (filter: any) => void}> = ({filterRecords}) => {
     const emptyFormValues = {category:'All', month:'All', year: 'All'};
@@ -74,9 +69,9 @@ const RecordsFilter : FC<{filterRecords: (filter: any) => void}> = ({filterRecor
                             fullWidth
                             onChange={handleInputChange}
                         >
-                            {categoriesOptions.map((option) => (
+                            {manager.categoriesOptions.map((option) => (
                                 <MenuItem key={option} value={option}>
-                                    {categoriesIcons[option]} {option}
+                                    {manager.categoriesIcons[option]} {option}
                                 </MenuItem>
                             ))}
                         </TextField>
@@ -91,7 +86,7 @@ const RecordsFilter : FC<{filterRecords: (filter: any) => void}> = ({filterRecor
                             fullWidth
                             onChange={handleInputChange}
                         >
-                            {monthOptions.map((option) => (
+                            {manager.monthOptions.map((option) => (
                                 <MenuItem key={option} value={option}>
                                     {option}
                                 </MenuItem>
@@ -108,7 +103,7 @@ const RecordsFilter : FC<{filterRecords: (filter: any) => void}> = ({filterRecor
                             fullWidth
                             onChange={handleInputChange}
                         >
-                            {yearOptions.map((option) => (
+                            {manager.yearOptions.map((option) => (
                                 <MenuItem key={option} value={option}>
                                     {option}
                                 </MenuItem>

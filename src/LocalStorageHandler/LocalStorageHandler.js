@@ -25,4 +25,3 @@ export class LocalStorageHandler{
         })
     }
 }
-//ToDO: add error handling
